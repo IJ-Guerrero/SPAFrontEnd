@@ -1,0 +1,38 @@
+{
+    "name": "Isaac Guerrero",
+    "age": "18",
+    "numeroDeTelefono": "+54 9 351-6208260",
+    "images": {
+        "miDibujoIntroduccion" : "https://i.ibb.co/FXNWP6N/Mi-Dibujo-Introduccion.png",
+        "instagramLogo": "https://i.ibb.co/XkV3xJv/instagram-Logo.png",
+        "gitHub": "https://i.ibb.co/xCnRCQ8/GitHub.png",
+        "miFoto": "https://i.ibb.co/87mnWGh/MiFoto.png",
+        "paginaDeEnghiv": "https://i.ibb.co/7pB7CDV/Pagina-De-Enghiv.png",
+        "skills": "https://i.ibb.co/YX0Ccm8/Skills.png"
+    },
+
+    "position": "Córdoba, Córdoba, Argentina",
+    "cursos": ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Word", "Excel", "Power Point" ],
+    "proyectos": [
+        {
+            "descripcion": "La página web de una empresa ficticia que tuve que desarrollar para un proyecto de la escuela:",
+            "proyectoEnlace": "https://ij-guerrero.github.io/ENGHiV/"
+        },
+
+        {
+            "descripcion": "Un conjunto de mis resoluciones a problemas de codewar:",
+            "proyectoEnlace": "https://github.com/IJ-Guerrero/K-Prime-actividad/blob/master/ejemplos.js"
+        }
+    ],
+
+    "pdfs":{
+        "CVIsaacGuerrero": "https://pdfhost.io/v/omw6IWxyR_CV_Isaac_Guerrero"
+    },
+
+    "redesSociales": {
+        "instagram": "https://www.instagram.com/isajo101/?next=%2F",
+        "gitHub": "https://github.com/IJ-Guerrero"
+    }
+
+
+}

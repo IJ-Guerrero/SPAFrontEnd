@@ -1,0 +1,36 @@
+<div class="container marketing">
+<hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">Habilidades<span class="text-muted"></span></h2>
+      <p class="lead">Mis principales habilidades dijitales incluyen el manejo de:</p>
+      <ul>
+        <li *ngFor="let curso of miPorfolio.cursos ">{{curso}}</li>
+      </ul>
+    </div>
+    <div class="col-md-5">
+      <img [src]="miPorfolio.images.skills" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="habilidades">
+    <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+
+    </div>
+  </div>
+  
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading fw-normal lh-1">Mis proyectos <span class="text-muted"></span></h2>
+      <p class="lead">Aquí podrás ver algunos de los proyectos en los que he trabajado: </p>
+      <ul>
+        <li *ngFor="let proyecto of miPorfolio.proyectos">{{proyecto.descripcion}} <a [href]="proyecto.proyectoEnlace" target="_blank">Click aquí</a></li>
+      </ul>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img [src]="miPorfolio.images.paginaDeEnghiv" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="habilidades">
+
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+</div>
