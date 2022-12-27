@@ -14,51 +14,74 @@
   
   <script>
 
+// FUNCIONES DE ACERCADE
+function eliminateAcercade() {
+  document.getElementById("acercade").style.display = "none";
+}
 
-function changeParagraph(valor) {
+
+function showTextareaAcercade() {
+  document.getElementById("edit-acercade").style.display = "block";
+  document.getElementById("checkAcercade").style.display = "block";
+
+}
+
+function changeParagraphAcercade(valor) {
   document.getElementById("text-acercade").innerText = valor;
 }
 
-function changeParagraph2() {
-  document.getElementById("text-acercade").innerText = "valor";
-}
 
-function showTextarea() {
-  document.getElementById("edit-acercade").style.display = "block";
-  document.getElementById("lines").style.display = "block";
-
-}
-
-function hideTextarea() {
+function hideTextareaAcercade() {
+  document.getElementById("checkAcercade").style.display = "none";
   document.getElementById("edit-acercade").style.display = "none";
 }
 
-function hideButton() {
-  document.getElementById("lines").style.display = "none";
-  hideTextarea();
+//FUNCIONES DE CURRICULUM
+function eliminateCurriculum() {
+  document.getElementById("curriculum").style.display = "none";
 }
+
+
+function showTextareaCurriculum() {
+  document.getElementById("edit-curriculum").style.display = "block";
+  document.getElementById("checkCurriculum").style.display = "block";
+
+}
+
+function changeParagraphCurriculum(valor) {
+  document.getElementById("text-curriculum").innerText = valor;
+}
+
+
+function hideTextareaCurriculum() {
+  document.getElementById("checkCurriculum").style.display = "none";
+  document.getElementById("edit-curriculum").style.display = "none";
+}
+
+
 
 //controls if the enter key was pressed
-let input = document.getElementById("edit-acercade");
-input.addEventListener('input', (e) => {
-  if (e.key == "Enter") {
-    changeParagraph2();
-  }
-});
+// <!-- /.col-lg-4 -->
+// let input = document.getElementById("edit-acercade");
+// input.addEventListener('input', (e) => {
+//   if (e.key == "Enter") {
+//     changeParagraph2();
+//   }
+// });
 
-function showInput() {
-  document.getElementById("edit-acercade").style.display = "block";
-}
+// function showInput() {
+//   document.getElementById("edit-acercade").style.display = "block";
+// }
 
-function showFile(input) {
-  let file = input.files[0];
+// function showFile(input) {
+//   let file = input.files[0];
 
-  let reader = new FileReader();
-  reader.readAsText(file);
-  reader.onload = function() {
-    document.getElementById("text-acercade").innerText = reader.result;
-  };
-}
+//   let reader = new FileReader();
+//   reader.readAsText(file);
+//   reader.onload = function() {
+//     document.getElementById("text-acercade").innerText = reader.result;
+//   };
+// }
 
 
     
