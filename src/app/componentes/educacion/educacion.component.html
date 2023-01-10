@@ -1,0 +1,115 @@
+<div id="educacion" style="margin: 2%;" class="card mat-card">
+    <div class="card-titles">
+        <div class="container marketing">
+    <!-- <hr class="featurette-divider"> -->
+            <div class="row featurette">
+                <div class="col-md-12">
+
+                    <!-- botones -->
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div style = "float: left; margin-right: 2.5%;" class="btn-edit" onclick="showTextarea('edit-educacion', 'checkEducacion', 'fileEducacion')">
+                              <button *ngIf="isLogged" class="btn btn-outline-dark me-2"> <i class="fa fa-pencil"></i></button>
+                            </div>
+                            <div style = "float: left;" class="btn-edit" onclick="eliminateSeccion('educacion')">
+                              <button *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-xmark"></i> </button>
+                            </div>
+                        </div>
+                    <!-- botones -->
+
+                    </div>
+                    <h2 class="featurette-heading fw-normal lh-1">Estudios<span class="text-muted"></span></h2>
+                    <!-- <ul >
+
+                        <div id="text-educacion" >
+                        <li  *ngFor="let estudio of miPorfolio.educacion"> <p class="h6">{{estudio.estudio}}<small class="text-muted">. {{estudio.periodo}}</small></p> <small><p>{{estudio.titulo}}</p></small><p class="font-italic">{{estudio.centroEducativo}}</p> </li>
+                        </div>
+                        <div>
+                            <input id="edit-educacion" type="text" oninput="changeParagraph(this.value, 'text-educacion')" style="display:none">
+                          </div>
+
+                          <input type="file" id="fileEducacion" onchange="showFile(this, 'text-educacion')" style="display:none">
+
+                          <div class="btn-edit" onclick="hideTextarea('edit-educacion', 'checkEducacion', 'fileEducacion')">
+                            <button style="display:none" id="checkEducacion" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
+                          </div>
+
+
+
+
+
+                    <div id="text-educacion" >
+                      <li  *ngFor="let educacion of educ"> <p class="h6">{{educacion.nombreE}}<small class="text-muted">. {{educacion.periodoE}}</small></p> <small>
+                        <button style="margin: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="delete(educacion.id)">
+                          <i  class="bi bi-trash-fill"></i>BORRAR</button>
+                        <p>{{educacion.tituloE}}</p></small><p class="font-italic">{{educacion.descripcionE}}</p> </li>
+                      </div>
+                      <div>
+                          <input id="edit-educacion" type="text" oninput="changeParagraph(this.value, 'text-educacion')" style="display:none">
+                        </div>
+
+                        <input type="file" id="fileEducacion" onchange="showFile(this, 'text-educacion')" style="display:none">
+
+                        <div class="btn-edit" onclick="hideTextarea('edit-educacion', 'checkEducacion', 'fileEducacion')">
+                          <button style="display:none" id="checkEducacion" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
+                        </div>
+                    </ul> -->
+                    <ul>
+                      <div id="text-educacion" >
+                        <li  *ngFor="let educacion of educ"> <p class="h6">{{educacion.nombreE}}<small class="text-muted"> {{educacion.periodoE}}</small>
+                        <button style="margin-left: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="delete(educacion.id)">
+                            <i  class="bi bi-trash-fill"></i>BORRAR</button>
+                        </p> <small>
+
+                          <p><strong>Título: </strong>{{educacion.tituloE}}</p></small><p class="font-italic">{{educacion.descripcionE}}</p> </li>
+
+                    </div>
+
+
+
+                    <div>
+                      <form style="display:none" id="edit-educacion" (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                          <div class="form-group">
+                              <label for="nombreE">Educación</label>
+                              <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="nombreE" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="descripcionE">Nombre del centro educativo</label>
+                              <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="descripcionE" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="tituloE">Titulo</label>
+                            <input type="text" class="form-control" id="tituloE" name="tituloE" [(ngModel)]="tituloE" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="periodoE">Periodo</label>
+                          <input type="text" class="form-control" id="periodoE" name="periodoE" [(ngModel)]="periodoE" required>
+                      </div>
+                          <button class="btn btn-primary">
+                              Agregar estudio
+                          </button>
+                          <div>
+                            <input id="edit-educacion" type="text" oninput="changeParagraph(this.value, 'text-educacion')" style="display:none">
+                          </div>
+
+                          <input type="file" id="fileEducacion" onchange="showFile(this, 'text-educacion')" style="display:none">
+
+
+                      </form>
+                      <div class="btn-edit" onclick="hideTextarea('edit-educacion', 'checkEducacion', 'fileEducacion')">
+                            <button style="display:none" id="checkEducacion" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
+                          </div>
+                  </div>
+
+                  </ul>
+                </div>
+                <!-- <div class="col-md-5">
+                    <img [src]="miPorfolio.images.skills" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="habilidades">
+                    <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                </div> -->
+            </div>
+        </div>
+    </div>
+  </div>
+
+
