@@ -18,10 +18,33 @@ export class HabilidadaesYproyectosComponent implements OnInit {
 
   habil: Habilidades[] = [];
 
-  ski: Skill[] = [];
+  // inicio 20230210
+  habili: Habilidades = null;
+  habilid: Habilidades = new Habilidades("--");
+  // FIN 20230210
 
   nombreE: string = '';
+
+  // inicio 20230210
+  nombreEM: string = '';
+  // inicio 20230210
+
+
+
+  ski: Skill[] = [];
+
+  // inicio 20230210
+  skii: Skill = null;
+  skiil: Skill = new Skill("--", 0);
+  // FIN 20230210
+
   nombre: string = '';
+
+    // inicio 20230210
+    nombreM: string = '';
+    // inicio 20230210
+
+
   porcentaje: number = 0;
   chart: any;
   miPorfolio:any;
@@ -94,12 +117,50 @@ isLogged = false;
       data => {
         alert("Habilidad añadida. Los cambios se veran reflejados al recargar la página.");
         this.router.navigate(['']);
+
+        // INICIO 20230210
+        this.nombreE = "";
+        this.cargarHabilidades();
+        // FIN 20230210
+
       }, err => {
         alert("Falló");
         this.router.navigate(['']);
       }
     )
   }
+
+  // INICIO 20230210
+  openUpdateFormH(form: string, id?: number): void {
+    this.sHabilidades.detail(id).subscribe(
+      data =>{
+        this.habili = data;
+        this.nombreEM = data.nombreE;
+        document.getElementById(form).scrollIntoView({behavior: 'smooth'});
+      }, err =>{
+        alert("Error al modificar");
+        this.router.navigate(['']);
+      }
+    )
+  }
+
+  onUpdateH(id?: number): void{
+   this.habilid = new Habilidades(this.nombreEM);
+   this.sHabilidades.update(id, this.habilid ).subscribe(
+    data => {
+      alert(`Habilidad actualizada. Dar click en "Aceptar" para que se reflejen los cambios`);
+      this.router.navigate(['']);
+      this.cargarHabilidades();
+
+    }, err => {
+      alert(`Error al modificar la habilidad`);
+      this.router.navigate(['']);
+    }
+
+  )
+
+  }
+  // FIN 20230210
 
   cargarHabilidades(): void {
     this.sHabilidades.lista().subscribe(data => { this.habil = data; })
@@ -123,12 +184,50 @@ isLogged = false;
       data => {
         alert("Información añadida. Los cambios se veran reflejados al recargar la página.");
         this.router.navigate(['']);
+
+        // INICIO 20230210
+        this.nombreM = "";
+        this.cargarSkill();
+        // FIN 20230210
+
       }, err => {
         alert("Falló");
         this.router.navigate(['']);
       }
     )
   }
+
+  // INICIO 20230210
+  openUpdateFormS(form: string, id?: number): void {
+    this.sSkill.detail(id).subscribe(
+      data =>{
+        this.skii = data;
+        this.nombreM = data.nombre;
+        document.getElementById(form).scrollIntoView({behavior: 'smooth'});
+      }, err =>{
+        alert("Error al modificar");
+        this.router.navigate(['']);
+      }
+    )
+  }
+
+  onUpdateS(id?: number): void{
+   this.skiil = new Skill(this.nombreM, 0);
+   this.sSkill.update(id, this.skiil ).subscribe(
+    data => {
+      alert(`Habilidad suave actualizada. Dar click en "Aceptar" para que se reflejen los cambios`);
+      this.router.navigate(['']);
+      this.cargarSkill();
+
+    }, err => {
+      alert(`Error al modificar la habilidad suave`);
+      this.router.navigate(['']);
+    }
+
+  )
+
+  }
+  // FIN 20230210
 
   cargarSkill(): void {
     this.sSkill.lista().subscribe(data => { this.ski = data; })

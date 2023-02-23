@@ -18,6 +18,7 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { interceptorProvider } from './servicios/interceptor-service';
+import { IgportafolioComponent } from './componentes/igportafolio/igportafolio.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { interceptorProvider } from './servicios/interceptor-service';
     ProyectosComponent,
     IniciarSesionComponent,
     PortfolioComponent,
+    IgportafolioComponent,
   ],
   imports: [
     BrowserModule,

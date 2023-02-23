@@ -1,76 +1,158 @@
-<div style="margin: 2%;" class="card mat-card">
-<div class="card-titles">
-<div class="container marketing">
-
-<div id="acercade" class="row featurette">
-    <div class="col-md-8">
-
-      <!-- botones -->
-      <div class="row">
-        <div>
-          <div style = "float: left; margin-right: 2.5%;" class="btn-edit" onclick="showTextarea('edit-acercade', 'checkAcercade', 'fileAcercade')">
-            <button *ngIf="isLogged" class="btn btn-outline-dark me-2"> <i class="fa fa-pencil"></i></button>
-          </div>
-          <div style = "float: left;" class="btn-edit" onclick="eliminateSeccion('acercade')">
-            <button *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-xmark"></i> </button>
-          </div>
-
-      </div>
-      </div>
-      <!-- botones -->
-
-
-              <ul style="list-style-type: none; margin: 111;" >
-                <h2 class="featurette-heading fw-normal lh-1">Acerca de</h2>
-                <div id="text-acercade" >
-                  <li  style="margin: 222;" *ngFor="let acercade of acer">
-                    <small>
-                      <button style="margin-left: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="delete(acercade.id)">
-                      <i  class="bi bi-trash-fill"></i>BORRAR</button>
-
-                  </small><p class="font-italic">{{acercade.descripcionE}}</p> </li>
-
+<div style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <div id="acercade" class="row featurette">
+        <div class="col-md-8">
+          <!-- botones -->
+          <div class="row">
+            <div>
+              <div
+                style="float: left; margin-right: 2.5%"
+                class="btn-edit"
+                onclick="showTextarea('edit-acercade', 'checkAcercade')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-pencil"></i>
+                </button>
               </div>
-
-
-
-              <div>
-                <form style="display:none" id="edit-acercade" (ngSubmit)="onCreate()" novalidate #f="ngForm">
-
-                    <div class="form-group">
-                        <label for="descripcionE">Información</label>
-                        <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="descripcionE" required>
-                    </div>
-
-                    <button class="btn btn-primary">
-                        Agregar Información
-                    </button>
-                    <div>
-                      <input id="edit-acercade" type="text" oninput="changeParagraph(this.value, 'text-acercade')" style="display:none">
-                    </div>
-
-                    <input type="file" id="fileAcercade" onchange="showFile(this, 'text-acercade')" style="display:none">
-
-
-                </form>
-                <div class="btn-edit" onclick="hideTextarea('edit-acercade', 'checkAcercade', 'fileAcercade')">
-                      <button style="display:none" id="checkAcercade" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
-                    </div>
+              <div
+                style="float: left"
+                class="btn-edit"
+                onclick="eliminateSeccion('acercade')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-circle-xmark"></i>
+                </button>
+              </div>
             </div>
-                <!-- <div>
+          </div>
+          <!-- botones -->
+
+          <ul style="list-style-type: none; margin: 111">
+            <h2 class="featurette-heading fw-normal lh-1">Acerca de</h2>
+            <div id="text-acercade">
+              <li style="margin: 222" *ngFor="let acercade of acer">
+                <small>
+                  <button
+                    style="margin-left: 2%"
+                    *ngIf="isLogged"
+                    class="btn btn-danger"
+                    (click)="delete(acercade.id)"
+                  >
+                    <i class="bi bi-trash-fill"></i>BORRAR
+                  </button>
+
+                  <!-- INICIO 20230210 -->
+
+                  <button
+                    style="margin-left: 2%"
+                    *ngIf="isLogged"
+                    class="btn btn-warning"
+                    (click)="openUpdateFormA('edit-acercademod', acercade.id)"
+                    onclick="showTextarea('edit-acercademod', 'checkAcercademod', 'fileAcercademod')"
+                  >
+                    <i class="bi bi-trash-fill"></i>EDITAR
+                  </button>
+                  <!-- FIN 20230210 -->
+                </small>
+                <p class="font-italic">{{ acercade.descripcionE }}</p>
+              </li>
+            </div>
+
+            <!--INICIO Prueba 202302101 -->
+
+            <div>
+              <form
+                style="display: none; padding-top: 4rem"
+                id="edit-acercademod"
+                (ngSubmit)="onUpdateA(acerc.id)"
+                novalidate
+                #f="ngForm"
+              >
+                <div class="form-group">
+                  <label for="descripcionE">Información</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcionE"
+                    name="descripcionE"
+                    [(ngModel)]="descripcionEM"
+                    required
+                  />
+                </div>
+
+                <button style="margin-bottom: 1%" class="btn btn-primary">
+                  Modificar Información
+                </button>
+              </form>
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('edit-acercademod', 'checkAcercademod', 'fileAcercademod')"
+              >
+                <button
+                  style="display: none"
+                  id="checkAcercademod"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
+              </div>
+            </div>
+            <!--FIN Prueba 202302101 -->
+
+            <div>
+              <form
+                style="display: none; padding-top: 4rem"
+                id="edit-acercade"
+                (ngSubmit)="onCreate()"
+                novalidate
+                #f="ngForm"
+              >
+                <div class="form-group">
+                  <label for="descripcionE">Información</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descripcionE"
+                    name="descripcionE"
+                    [(ngModel)]="descripcionE"
+                    required
+                  />
+                </div>
+
+                <button style="margin-bottom: 1%" class="btn btn-primary">
+                  Agregar Información
+                </button>
+              </form>
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('edit-acercade', 'checkAcercade', 'fileAcercade')"
+              >
+                <button
+                  style="display: none"
+                  id="checkAcercade"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
+              </div>
+            </div>
+            <!-- <div>
                     <input id="edit-experiencia" type="text" oninput="changeParagraph(this.value, 'text-experiencia')" style="display:none">
                   </div> -->
 
-                  <!-- <input type="file" id="fileExperiencia" onchange="showFile(this, 'text-experiencia')" style="display:none"> -->
+            <!-- <input type="file" id="fileExperiencia" onchange="showFile(this, 'text-experiencia')" style="display:none"> -->
 
-                  <!-- <div class="btn-edit" onclick="hideTextarea('edit-experiencia', 'checkExperiencia', 'fileExperiencia')">
+            <!-- <div class="btn-edit" onclick="hideTextarea('edit-experiencia', 'checkExperiencia', 'fileExperiencia')">
                     <button style="display:none" id="checkExperiencia" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
                   </div> -->
-            </ul>
-              <!-- <p id="text-acercade">
+          </ul>
+          <!-- <p id="text-acercade">
                 Mi nombre es {{miPorfolio.name}}. Tengo {{miPorfolio.age}} años y soy un desarrollador de software y operador de Tecnologías de la Información. Cuento con el título de Desarrollador Web Full Stack Jr. Tengo una buena capacidad para resolver problemas, y se me da bien aprender y trabajar en equipo. Cuento con educación secundaria completa y experiencia profecional desempeñando tareas de Atención al cliente y utilizando herramientas y tecnologías computacionales en mi desempeño profesional.
               </p> -->
-              <!-- <div>
+          <!-- <div>
                 <input id="edit-acercade" type="text" oninput="changeParagraph(this.value, 'text-acercade')" style="display:none">
               </div>
 
@@ -79,93 +161,179 @@
               <div class="btn-edit" onclick="hideTextarea('edit-acercade', 'checkAcercade', 'fileAcercade')">
                 <button style="display:none" id="checkAcercade" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
               </div> -->
+        </div>
+
+        <div id="curriculum" class="col-md-4">
+          <div class="row">
+            <div>
+              <div
+                style="float: left; margin-right: 2.5%"
+                class="btn-edit"
+                onclick="showTextarea('edit-curriculum', 'checkCurriculum')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </div>
+
+              <div
+                style="float: left"
+                class="btn-edit"
+                onclick="eliminateSeccion('curriculum')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-circle-xmark"></i>
+                </button>
+              </div>
             </div>
+          </div>
 
+          <ul style="list-style-type: none; margin: 111">
+            <div>
+              <li *ngFor="let curriculum of curri">
+                <div id="text-curriculum">
+                  <img
+                    [src]="curriculum.nombreE"
+                    class="bd-placeholder-img featurette-image img-fluid mx-auto"
+                    width="140"
+                    height="140"
+                    alt="Mi foto"
+                  />
+                  <p class="h6">
+                    <button
+                      style="margin: 2%"
+                      *ngIf="isLogged"
+                      class="btn btn-danger"
+                      (click)="deleteC(curriculum.id)"
+                    >
+                      <i class="bi bi-trash-fill"></i>BORRAR
+                    </button>
 
+                    <!-- INICIO 20230210 -->
+                    <button
+                      style="margin-left: 2%"
+                      *ngIf="isLogged"
+                      class="btn btn-warning"
+                      (click)="
+                        openUpdateFormC('edit-curriculummod', curriculum.id)
+                      "
+                      onclick="showTextarea('edit-curriculummod', 'checkCurriculummod')"
+                    >
+                      <i class="bi bi-trash-fill"></i>EDITAR
+                    </button>
+                    <!-- FIN 20230210 -->
+                  </p>
+                </div>
+              </li>
+              <!-- INICIO 20230210 -->
 
-            <div id="curriculum" class="col-md-4">
-
-              <div class="row">
-
-                <div>
-                  <div style = "float: left; margin-right: 2.5%;" class="btn-edit" onclick="showTextarea('edit-curriculum', 'checkCurriculum', 'fileCurriculum')">
-                    <button *ngIf="isLogged" class="btn btn-outline-dark me-2"> <i class="fa fa-pencil"></i></button>
+              <div>
+                <form
+                  style="display: none; padding-top: 4rem"
+                  id="edit-curriculummod"
+                  (ngSubmit)="onUpdateC(curric.id)"
+                  novalidate
+                  #f="ngForm"
+                >
+                  <div class="form-group">
+                    <label for="nombreE">Link de la foto</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombreE"
+                      name="nombreE"
+                      [(ngModel)]="nombreEM"
+                      required
+                    />
                   </div>
 
-                  <div style = "float: left;" class="btn-edit" onclick="eliminateSeccion('curriculum')">
-                    <button *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-xmark"></i> </button>
+                  <button style="margin-bottom: 1%" class="btn btn-primary">
+                    Modificar Foto
+                  </button>
+
+                  <div
+                    class="btn-edit"
+                    onclick="hideTextarea('checkCurriculummod', 'edit-curriculummod')"
+                  >
+                    <button
+                      style="display: none"
+                      id="checkCurriculummod"
+                      *ngIf="isLogged"
+                      class="btn btn-outline-dark me-2"
+                    >
+                      <i class="fa fa-circle-check"></i>
+                    </button>
                   </div>
-                </div>
+                </form>
+              </div>
+              <!-- FIN 20230210 -->
+
+              <div>
+                <form
+                  style="display: none; padding-top: 4rem"
+                  id="edit-curriculum"
+                  (ngSubmit)="onCreateC()"
+                  novalidate
+                  #f="ngForm"
+                >
+                  <div class="form-group">
+                    <label for="nombreE">Link de la foto</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombreE"
+                      name="nombreE"
+                      [(ngModel)]="nombreE"
+                      required
+                    />
+                  </div>
+
+                  <button style="margin-bottom: 1%" class="btn btn-primary">
+                    Agregar Foto
+                  </button>
+                </form>
+              </div>
+              <input
+                type="file"
+                id="fileCurriculum"
+                onchange="showFile(this, 'text-curriculum', 'fileCurriculum')"
+                style="display: none"
+              />
+
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('checkCurriculum', 'edit-curriculum', 'fileCurriculum')"
+              >
+                <button
+                  style="display: none"
+                  id="checkCurriculum"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
               </div>
 
-              <ul style="list-style-type: none; margin: 111;">
+              <h2 class="fw-normal">Curriculum</h2>
+              <p id="text-curriculum">Puedes ver mi curriculum aquí</p>
 
-                <div>
+              <p>
+                <a
+                  class="btn btn-secondary"
+                  [href]="miPorfolio.pdfs.CVIsaacGuerrero"
+                  target="_blank"
+                  >Ver detalles &raquo;</a
+                >
+              </p>
 
-                <li *ngFor="let curriculum of curri">
-
-                  <div id="text-curriculum" >
-                  <img [src]="curriculum.nombreE" class="bd-placeholder-img featurette-image img-fluid mx-auto" width="140" height="140" alt="Mi foto" /> <p class="h6">
-
-                  <button style="margin: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="deleteC(curriculum.id)">
-                    <i  class="bi bi-trash-fill"></i>BORRAR</button>
-
-                </p>
-                </div>
-
-                </li>
-                <div>
-                  <form style="display:none" id="edit-curriculum" (ngSubmit)="onCreateC()" novalidate #f="ngForm">
-                      <div class="form-group">
-                          <label for="nombreE">Link de la foto</label>
-                          <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="nombreE" required>
-                      </div>
-
-
-
-                      <button class="btn btn-primary">
-                          Agregar Foto
-                      </button>
-                  </form>
-              </div>
-              <input type="file" id="fileCurriculum" onchange="showFile(this, 'text-curriculum', 'fileCurriculum')" style="display:none">
-
-                <div class="btn-edit" onclick="hideTextarea('checkCurriculum', 'edit-curriculum', 'fileCurriculum')">
-                  <button style="display:none" id="checkCurriculum" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
-                </div>
-
-                <h2 class="fw-normal">Curriculum</h2>
-                <p id="text-curriculum">Puedes ver mi curriculum aquí</p>
-
-
-
-
-                <p>
-                  <a class="btn btn-secondary" [href]="miPorfolio.pdfs.CVIsaacGuerrero" target="_blank">Ver detalles &raquo;</a>
-                </p>
-
-                <!-- <li *ngFor="let experiencia of miPorfolio.experienciasLaborales"><img [src]="miPorfolio.images.bancorLogo" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="100" alt="habilidades" alt="Bullet point 1" /> <p class="h6">{{experiencia.puesto}}<small class="text-muted">. {{experiencia.periodo}}</small></p> <p class="font-italic">{{experiencia.descripcion}}</p> </li> -->
-
-              </div>
-
-
-
-
-
-            </ul>
-      <!-- <img [src]="miPorfolio.images.miFoto" width="140" height="140" class="bd-placeholder-img" alt="Mi foto"> -->
-      <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+              <!-- <li *ngFor="let experiencia of miPorfolio.experienciasLaborales"><img [src]="miPorfolio.images.bancorLogo" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="100" alt="habilidades" alt="Bullet point 1" /> <p class="h6">{{experiencia.puesto}}<small class="text-muted">. {{experiencia.periodo}}</small></p> <p class="font-italic">{{experiencia.descripcion}}</p> </li> -->
+            </div>
+          </ul>
+          <!-- <img [src]="miPorfolio.images.miFoto" width="140" height="140" class="bd-placeholder-img" alt="Mi foto"> -->
+          <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 -->
-
-
-
-    </div>
-
-
-
+        </div>
+      </div>
     </div>
   </div>
-
-
-</div>
 </div>

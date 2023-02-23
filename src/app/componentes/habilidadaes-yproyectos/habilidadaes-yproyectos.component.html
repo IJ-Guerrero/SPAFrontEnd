@@ -1,143 +1,355 @@
-<div style="margin: 2%;" class="card mat-card">
+<div style="margin: 2%" class="card mat-card">
   <div class="card-titles">
-      <div class="container marketing">
-  <!-- <hr class="featurette-divider"> -->
-          <div class="row featurette">
-              <div id="habilidadesDigitales" class="col-md-7">
-
-                <!-- botones -->
-                <div class="row">
-                    <div>
-                        <div style = "float: left; margin-right: 2.5%;" class="btn-edit" onclick="showTextarea('edit-habilidadesDigitales', 'checkHabilidadesDigitales', 'fileHabilidadesDigitales')">
-                          <button *ngIf="isLogged" class="btn btn-outline-dark me-2"> <i class="fa fa-pencil"></i></button>
-                        </div>
-                        <div style = "float: left;" class="btn-edit" onclick="eliminateSeccion('habilidadesDigitales')">
-                          <button *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-xmark"></i> </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- botones -->
-
-                  <h2 class="featurette-heading fw-normal lh-1">Habilidades<span class="text-muted"></span></h2>
-                  <p class="lead">Mis principales habilidades digitales incluyen el manejo de:</p>
-
-                  <ul>
-                    <div id="text-habilidadesDigitales" >
-                      <li *ngFor="let habilidad of habil"> <p class="h6">{{habilidad.nombreE}}
-                      <button style="margin-left: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="delete(habilidad.id)">
-                          <i  class="bi bi-trash-fill"></i>BORRAR</button>
-                       </li>
-                  </div>
-
-                  <div>
-                    <form style="display:none" id="edit-habilidadesDigitales" (ngSubmit)="onCreate()" novalidate #f="ngForm">
-                        <div class="form-group">
-                            <label for="nombreE">Habilidad</label>
-                            <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="nombreE" required>
-                        </div>
-
-                        <button class="btn btn-primary">
-                            Agregar habilidad
-                        </button>
-
-
-                        <input type="file" id="fileHabilidadesDigitales" onchange="showFile(this, 'text-habilidadesDigitales')" style="display:none">
-                    </form>
-                    <div class="btn-edit" onclick="hideTextarea('edit-habilidadesDigitales', 'checkHabilidadesDigitales', 'fileHabilidadesDigitales')">
-                          <button style="display:none" id="checkHabilidadesDigitales" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
-                        </div>
-                </div>
-                </ul>
-
-</div>
-              <div class="col-md-5">
-                  <img [src]="miPorfolio.images.skills" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="habilidades">
-                  <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+    <div class="container marketing">
+      <!-- <hr class="featurette-divider"> -->
+      <div class="row featurette">
+        <div id="habilidadesDigitales" class="col-md-7">
+          <!-- botones -->
+          <div class="row">
+            <div>
+              <div
+                style="float: left; margin-right: 2.5%"
+                class="btn-edit"
+                onclick="showTextarea('edit-habilidadesDigitales', 'checkHabilidadesDigitales')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-pencil"></i>
+                </button>
               </div>
+              <div
+                style="float: left"
+                class="btn-edit"
+                onclick="eliminateSeccion('habilidadesDigitales')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-circle-xmark"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- botones -->
 
-</div>
+          <h2 class="featurette-heading fw-normal lh-1">
+            Habilidades<span class="text-muted"></span>
+          </h2>
+          <p class="lead">
+            Mis principales habilidades digitales incluyen el manejo de:
+          </p>
 
+          <ul>
+            <div id="text-habilidadesDigitales">
+              <li *ngFor="let habilidad of habil">
+                <p class="h6">
+                  {{ habilidad.nombreE }}
+                  <button
+                    style="margin-left: 2%"
+                    *ngIf="isLogged"
+                    class="btn btn-danger"
+                    (click)="delete(habilidad.id)"
+                  >
+                    <i class="bi bi-trash-fill"></i>BORRAR
+                  </button>
 
-          <!-- Soft skils -->
-          <div class="row featurette">
-            <div id="softSkills" class="col-md-12">
+                  <!-- INICIO 20230210 -->
 
-                <div class="row">
-                     <div class="col-lg-8">
-                        <div style = "float: left; margin-right: 2.5%;" class="btn-edit" onclick="showTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')">
-                          <button *ngIf="isLogged" class="btn btn-outline-dark me-2"> <i class="fa fa-pencil"></i></button>
-                        </div>
-                        <div style = "float: left;" class="btn-edit" onclick="eliminateSeccion('softSkills')">
-                          <button *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-xmark"></i> </button>
-                        </div>
-                    </div>
-                    <!-- <div>
+                  <button
+                    style="margin-left: 2%"
+                    *ngIf="isLogged"
+                    class="btn btn-warning"
+                    (click)="
+                      openUpdateFormH(
+                        'edit-habilidadesDigitalesmod',
+                        habilidad.id
+                      )
+                    "
+                    onclick="showTextarea('edit-habilidadesDigitalesmod', 'checkHabilidadesDigitalesmod')"
+                  >
+                    <i class="bi bi-trash-fill"></i>EDITAR
+                  </button>
+                  <!-- FIN 20230210 -->
+                </p>
+              </li>
+            </div>
+            <!-- INICIO 20230210 -->
+            <div>
+              <form
+                style="display: none; padding-top: 4rem"
+                id="edit-habilidadesDigitalesmod"
+                (ngSubmit)="onUpdateH(habili.id)"
+                novalidate
+                #f="ngForm"
+              >
+                <div class="form-group">
+                  <label for="nombreE">Habilidad</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombreE"
+                    name="nombreE"
+                    [(ngModel)]="nombreEM"
+                    required
+                  />
+                </div>
+
+                <button style="margin-bottom: 1%" class="btn btn-primary">
+                  Modificar habilidad
+                </button>
+              </form>
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('edit-habilidadesDigitalesmod', 'checkHabilidadesDigitalesmod')"
+              >
+                <button
+                  style="display: none"
+                  id="checkHabilidadesDigitalesmod"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
+              </div>
+            </div>
+            <!-- FIN 20230210 -->
+
+            <div>
+              <form
+                style="display: none; padding-top: 4rem"
+                id="edit-habilidadesDigitales"
+                (ngSubmit)="onCreate()"
+                novalidate
+                #f="ngForm"
+              >
+                <div class="form-group">
+                  <label for="nombreE">Habilidad</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombreE"
+                    name="nombreE"
+                    [(ngModel)]="nombreE"
+                    required
+                  />
+                </div>
+
+                <button style="margin-bottom: 1%" class="btn btn-primary">
+                  Agregar habilidad
+                </button>
+
+                <input
+                  type="file"
+                  id="fileHabilidadesDigitales"
+                  onchange="showFile(this, 'text-habilidadesDigitales')"
+                  style="display: none"
+                />
+              </form>
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('edit-habilidadesDigitales', 'checkHabilidadesDigitales', 'fileHabilidadesDigitales')"
+              >
+                <button
+                  style="display: none"
+                  id="checkHabilidadesDigitales"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img
+            [src]="miPorfolio.images.skills"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            width="500"
+            height="500"
+            alt="habilidades"
+          />
+          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        </div>
+      </div>
+
+      <!-- Soft skils -->
+      <div class="row featurette">
+        <div id="softSkills" class="col-md-12">
+          <div class="row">
+            <div class="col-lg-8">
+              <div
+                style="float: left; margin-right: 2.5%"
+                class="btn-edit"
+                onclick="showTextarea('edit-softSkills', 'checkSoftSkills')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </div>
+              <div
+                style="float: left"
+                class="btn-edit"
+                onclick="eliminateSeccion('softSkills')"
+              >
+                <button *ngIf="isLogged" class="btn btn-outline-dark me-2">
+                  <i class="fa fa-circle-xmark"></i>
+                </button>
+              </div>
+            </div>
+            <!-- <div>
                         <input id="edit-softSkills" type="text" oninput="changeParagraph(this.value, 'text-softSkills')" style="display:none">
                     </div> -->
 
-                    <!-- <input type="file" id="fileSoftSkills" onchange="showFile(this, 'text-softSkills')" style="display:none"> -->
+            <!-- <input type="file" id="fileSoftSkills" onchange="showFile(this, 'text-softSkills')" style="display:none"> -->
 
-                    <!-- <div class="btn-edit" onclick="hideTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')">
+            <!-- <div class="btn-edit" onclick="hideTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')">
                       <button style="display:none" id="checkSoftSkills" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
                     </div> -->
-                <!-- botones -->
+            <!-- botones -->
 
-                <h2 class="featurette-heading fw-normal lh-1">Competencias blandas<span class="text-muted"></span></h2>
+            <h2 class="featurette-heading fw-normal lh-1">
+              Competencias blandas<span class="text-muted"></span>
+            </h2>
 
-                  <ul style="list-style-type: none; margin: 111;">
-                    <div id="text-softSkills" >
-                      <li  *ngFor="let informacion of ski"> <p>{{informacion.nombre}}
-                      <button style="margin-left: 2%;" *ngIf="isLogged"class="btn btn-danger" (click)="deleteS(informacion.id)">
-                          <i  class="bi bi-trash-fill"></i>BORRAR</button>
-                      </p>  </li>
+            <ul style="list-style-type: none; margin: 111">
+              <div id="text-softSkills">
+                <li *ngFor="let informacion of ski">
+                  <p>
+                    {{ informacion.nombre }}
+                    <button
+                      style="margin-left: 2%"
+                      *ngIf="isLogged"
+                      class="btn btn-danger"
+                      (click)="deleteS(informacion.id)"
+                    >
+                      <i class="bi bi-trash-fill"></i>BORRAR
+                    </button>
 
+                    <!-- INICIO 20230210 -->
+
+                    <button
+                      style="margin-left: 2%"
+                      *ngIf="isLogged"
+                      class="btn btn-warning"
+                      (click)="
+                        openUpdateFormS('edit-softSkillsmod', informacion.id)
+                      "
+                      onclick="showTextarea('edit-softSkillsmod', 'checkSoftSkillsmod')"
+                    >
+                      <i class="bi bi-trash-fill"></i>EDITAR
+                    </button>
+                    <!-- FIN 20230210 -->
+                  </p>
+                </li>
+              </div>
+
+              <!-- INICIO 20230210 -->
+              <div>
+                <form
+                  style="display: none; padding-top: 4rem"
+                  id="edit-softSkillsmod"
+                  (ngSubmit)="onUpdateS(skii.id)"
+                  novalidate
+                  #f="ngForm"
+                >
+                  <div class="form-group">
+                    <label for="nombre">Información</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      name="nombre"
+                      [(ngModel)]="nombreM"
+                      required
+                    />
                   </div>
 
+                  <button style="margin-bottom: 1%" class="btn btn-primary">
+                    Modificar información
+                  </button>
 
+                  <div
+                    class="btn-edit"
+                    onclick="hideTextarea('edit-softSkillsmod', 'checkSoftSkillsmod')"
+                  >
+                    <button
+                      style="display: none"
+                      id="checkSoftSkillsmod"
+                      *ngIf="isLogged"
+                      class="btn btn-outline-dark me-2"
+                    >
+                      <i class="fa fa-circle-check"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <!-- FIN 20230210 -->
 
-                  <div>
-                    <form style="display:none" id="edit-softSkills" (ngSubmit)="onCreateS()" novalidate #f="ngForm">
-                        <div class="form-group">
-                            <label for="nombre">Información</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
-                        </div>
+              <div>
+                <form
+                  style="display: none; padding-top: 4rem"
+                  id="edit-softSkills"
+                  (ngSubmit)="onCreateS()"
+                  novalidate
+                  #f="ngForm"
+                >
+                  <div class="form-group">
+                    <label for="nombre">Información</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      name="nombre"
+                      [(ngModel)]="nombre"
+                      required
+                    />
+                  </div>
 
-
-
-                        <button class="btn btn-primary">
-                            Agregar información
-                        </button>
-                        <input type="file" id="fileSoftSkills" onchange="showFile(this, 'text-softSkills')" style="display:none">
-                        <div class="btn-edit" onclick="hideTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')">
-                          <button style="display:none" id="checkSoftSkills" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
-                        </div>
-                        <div>
-                          <input id="edit-softSkills" type="text" oninput="changeParagraph(this.value, 'text-softSkills')" style="display:none">
-                        </div>
-
-                    </form>
-
-
+                  <button style="margin-bottom: 1%" class="btn btn-primary">
+                    Agregar información
+                  </button>
+                  <input
+                    type="file"
+                    id="fileSoftSkills"
+                    onchange="showFile(this, 'text-softSkills')"
+                    style="display: none"
+                  />
+                </form>
+                <div
+                  class="btn-edit"
+                  onclick="hideTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')"
+                >
+                  <button
+                    style="display: none"
+                    id="checkSoftSkills"
+                    *ngIf="isLogged"
+                    class="btn btn-outline-dark me-2"
+                  >
+                    <i class="fa fa-circle-check"></i>
+                  </button>
                 </div>
-                    <div>
-                        <input id="edit-softSkills" type="text" oninput="changeParagraph(this.value, 'text-softSkills')" style="display:none">
-                      </div>
+              </div>
 
-                      <input type="file" id="fileSoftSkills" onchange="showFile(this, 'text-softSkills')" style="display:none">
-
-                      <div class="btn-edit" onclick="hideTextarea('edit-softSkills', 'checkSoftSkills', 'fileSoftSkills')">
-                        <button style="display:none" id="checkSoftSkills" *ngIf="isLogged" class="btn btn-outline-dark me-2"><i class="fa fa-circle-check"></i> </button>
-                        <!-- <a style="display:none" id="checkExperiencia" href="#experiencia" class="btn-right"><i class="fa fa-circle-check"></i></a> -->
-                      </div>
-                </ul>
-                    <!-- <p class="lead">Resultados obtenidos del Test de Competencias Laborales de Computrabajo</p> -->
-                    <div>
-                        <canvas id="radarChartCompetenciasLaborales"></canvas>
-                    </div>
-
+              <div
+                class="btn-edit"
+                onclick="hideTextarea('edit-softSkills', 'checkSoftSkills')"
+              >
+                <button
+                  style="display: none"
+                  id="checkSoftSkills"
+                  *ngIf="isLogged"
+                  class="btn btn-outline-dark me-2"
+                >
+                  <i class="fa fa-circle-check"></i>
+                </button>
+                <!-- <a style="display:none" id="checkExperiencia" href="#experiencia" class="btn-right"><i class="fa fa-circle-check"></i></a> -->
+              </div>
+            </ul>
+            <!-- <p class="lead">Resultados obtenidos del Test de Competencias Laborales de Computrabajo</p> -->
+            <div>
+              <canvas id="radarChartCompetenciasLaborales"></canvas>
             </div>
+          </div>
         </div>
-
-
+      </div>
+    </div>
   </div>
 </div>

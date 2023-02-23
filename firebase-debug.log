@@ -1,0 +1,38 @@
+[debug] [2023-02-23T20:04:17.228Z] ----------------------------------------------------------------------
+[debug] [2023-02-23T20:04:17.233Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\MiYo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-02-23T20:04:17.234Z] CLI Version:   11.22.0
+[debug] [2023-02-23T20:04:17.234Z] Platform:      win32
+[debug] [2023-02-23T20:04:17.235Z] Node Version:  v16.17.1
+[debug] [2023-02-23T20:04:17.247Z] Time:          Thu Feb 23 2023 17:04:17 GMT-0300 (hora estándar de Argentina)
+[debug] [2023-02-23T20:04:17.248Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-23T20:04:17.258Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-02-23T20:04:17.732Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-23T20:04:17.733Z] > authorizing via signed-in user (dguerrero2090@gmail.com)
+[debug] [2023-02-23T20:04:17.734Z] [iam] checking project portafolio-9a4ad for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-02-23T20:04:17.736Z] > refreshing access token with scopes: []
+[debug] [2023-02-23T20:04:17.738Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-02-23T20:04:17.739Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-02-23T20:04:18.034Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-02-23T20:04:18.034Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-02-23T20:04:18.077Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/portafolio-9a4ad:testIamPermissions [none]
+[debug] [2023-02-23T20:04:18.077Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/portafolio-9a4ad:testIamPermissions x-goog-quota-user=projects/portafolio-9a4ad
+[debug] [2023-02-23T20:04:18.078Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/portafolio-9a4ad:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-02-23T20:04:18.208Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-02-23T20:04:18.209Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-02-23T20:04:19.223Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/portafolio-9a4ad:testIamPermissions 200
+[debug] [2023-02-23T20:04:19.223Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/portafolio-9a4ad:testIamPermissions {}
+[debug] [2023-02-23T20:04:19.224Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project portafolio-9a4ad:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2023-02-23T20:04:19.227Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/portafolio-9a4ad [none]
+[debug] [2023-02-23T20:04:19.635Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/portafolio-9a4ad 403
+[debug] [2023-02-23T20:04:19.636Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/portafolio-9a4ad {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-02-23T20:04:19.638Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-02-23T20:04:19.642Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\MiYo\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\MiYo\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project portafolio-9a4ad. Please make sure the project exists and your account has permission to access it.

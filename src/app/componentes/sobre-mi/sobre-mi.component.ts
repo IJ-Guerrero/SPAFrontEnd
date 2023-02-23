@@ -13,28 +13,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./sobre-mi.component.css']
 })
 export class SobreMiComponent implements OnInit {
-  // miPorfolio:any;
-  // constructor(private datosPorfolio:PorfolioService, private tokenService: TokenService) { }
-  // isLogged = false;
 
-  // ngOnInit(): void {
-  //   this.datosPorfolio.obtenerDatos().subscribe(data =>{
+    acer: Acercade[] = [];
 
-  //     this.miPorfolio=data;
-  //   })
-
-  //     if (this.tokenService.getToken()) {
-  //       this.isLogged = true;
-  //     } else {
-  //       this.isLogged = false;
-  //     }
-  // }
+    // inicio 20230210
+    acerc: Acercade = null;
+    acerca: Acercade = new Acercade("--");
+    // FIN 20230210
 
 
-  acer: Acercade[] = [];
-  descripcionE: string = '';
+    descripcionE: string = '';
+
+      // inicio 20230210
+    descripcionEM: string = '';
+  // FIN 20230210
+
+
   curri: Curriculum[] = [];
+
+  // inicio 20230210
+  curric: Curriculum = null;
+  curricu: Curriculum = new Curriculum("--");
+  // FIN 20230210
+
+
   nombreE: string = '';
+
+  // inicio 20230210
+  nombreEM: string = '';
+  // FIN 20230210
+
+
+
   miPorfolio:any;
 
 
@@ -53,7 +63,7 @@ export class SobreMiComponent implements OnInit {
     }
 
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      console.log(data);
+
       this.miPorfolio=data;
     });
 
@@ -66,12 +76,48 @@ export class SobreMiComponent implements OnInit {
       data => {
         alert("Información añadida. Los cambios se veran reflejados al recargar la página.");
         this.router.navigate(['']);
+
+        this.descripcionE = "";
+        this.cargarAcercade();
+
       }, err => {
         alert("Falló");
         this.router.navigate(['']);
       }
     )
   }
+
+  // INICIO 20230210
+  openUpdateFormA(form: string, id?: number): void {
+    this.sAcercade.detail(id).subscribe(
+      data =>{
+        this.acerc = data;
+        this.descripcionEM = data.descripcionE;
+        document.getElementById(form).scrollIntoView({behavior: 'smooth'});
+      }, err =>{
+        alert("Error al modificar");
+        this.router.navigate(['']);
+      }
+    )
+  }
+
+  onUpdateA(id?: number): void{
+   this.acerca = new Acercade(this.descripcionEM);
+   this.sAcercade.update(id, this.acerca ).subscribe(
+    data => {
+      alert(`Información actualizada. Dar click en "Aceptar" para que se reflejen los cambios`);
+      this.router.navigate(['']);
+      this.cargarAcercade();
+
+    }, err => {
+      alert(`Error al modificar la información Sobre mi`);
+      this.router.navigate(['']);
+    }
+
+  )
+
+  }
+  // FIN 20230210
 
   cargarAcercade(): void {
     this.sAcercade.lista().subscribe(data => { this.acer = data; })
@@ -95,12 +141,47 @@ export class SobreMiComponent implements OnInit {
       data => {
         alert("Foto añadida. Los cambios se veran reflejados al recargar la página.");
         this.router.navigate(['']);
+
+        this.nombreE = "";
+        this.cargarCurriculum();
       }, err => {
         alert("Falló");
         this.router.navigate(['']);
       }
     )
   }
+
+    // INICIO 20230210
+    openUpdateFormC(form: string, id?: number): void {
+      this.sCurriculum.detail(id).subscribe(
+        data =>{
+          this.curric = data;
+          this.nombreEM = data.nombreE;
+          document.getElementById(form).scrollIntoView({behavior: 'smooth'});
+        }, err =>{
+          alert("Error al modificar");
+          this.router.navigate(['']);
+        }
+      )
+    }
+
+    onUpdateC(id?: number): void{
+     this.curricu = new Curriculum(this.nombreEM);
+     this.sCurriculum.update(id, this.curricu ).subscribe(
+      data => {
+        alert(`Foto actualizada. Dar click en "Aceptar" para que se reflejen los cambios`);
+        this.router.navigate(['']);
+        this.cargarCurriculum();
+
+      }, err => {
+        alert(`Error al modificar la imagen`);
+        this.router.navigate(['']);
+      }
+
+    )
+
+    }
+    // FIN 20230210
 
   cargarCurriculum(): void {
     this.sCurriculum.lista().subscribe(data => { this.curri = data; })

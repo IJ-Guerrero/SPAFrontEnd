@@ -1,0 +1,277 @@
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <ul class="nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+            <img
+              [src]="miPorfolio.images.argentinaProgramaLogo"
+              width="130"
+              height="25"
+              class="bd-placeholder-img"
+              alt="Mi foto"
+          /></a>
+        </li>
+        <!-- <li class="nav-item"><a href="#" class="nav-link link-light px-2">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-light px-2">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-light px-2">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link link-light px-2">About</a></li> -->
+      </ul>
+
+      <div class="text-end">
+        <div class="hidden-xs">
+          <a
+            style="margin-right: 7px"
+            [href]="miPorfolio.redesSociales.instagram"
+            target="_blank"
+            ><img
+              [src]="miPorfolio.images.instagramLogo"
+              width="25"
+              height="25"
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              alt="Mi foto"
+          /></a>
+          <a
+            style="margin-right: 7px"
+            [href]="miPorfolio.redesSociales.gitHub"
+            target="_blank"
+            ><img
+              [src]="miPorfolio.images.gitHubBlanco"
+              width="25"
+              height="25"
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              alt="Mi foto"
+          /></a>
+          <a
+            style="margin-right: 14px"
+            [href]="miPorfolio.redesSociales.facebook"
+            target="_blank"
+            ><img
+              [src]="miPorfolio.images.facebookLogo"
+              width="25"
+              height="25"
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              alt="Mi foto"
+          /></a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10t">
+      <img
+        [src]="miPorfolio.images.miDibujoIntroduccion"
+        height="100%"
+        width="100%"
+        alt="Foto de perfil"
+      />
+    </div>
+  </div>
+</div>
+
+<div style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <div id="acercade" class="row featurette">
+        <div class="col-md-8">
+          <ul style="list-style-type: none; margin: 111">
+            <h2 class="featurette-heading fw-normal lh-1">Acerca de</h2>
+            <div id="text-acercade">
+              <li style="margin: 222" *ngFor="let acercade of miPorfolio.acer">
+                <p class="font-italic">{{ acercade.descripcion }}</p>
+              </li>
+            </div>
+          </ul>
+        </div>
+
+        <div id="curriculum" class="col-md-4">
+          <ul style="list-style-type: none; margin: 111">
+            <div>
+              <li *ngFor="let curriculum of miPorfolio.curri">
+                <div id="text-curriculum">
+                  <img
+                    [src]="curriculum.miFoto"
+                    class="bd-placeholder-img featurette-image img-fluid mx-auto"
+                    width="140"
+                    height="140"
+                    alt="Mi foto"
+                  />
+                  <p class="h6"></p>
+                </div>
+              </li>
+
+              <h2 class="fw-normal">Curriculum</h2>
+              <p id="text-curriculum">Puedes ver mi curriculum aquí</p>
+
+              <p>
+                <a
+                  class="btn btn-secondary"
+                  [href]="miPorfolio.pdfs.CVIsaacGuerrero"
+                  target="_blank"
+                  >Ver detalles &raquo;</a
+                >
+              </p>
+
+              <!-- <li *ngFor="let experiencia of miPorfolio.experienciasLaborales"><img [src]="miPorfolio.images.bancorLogo" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="200" height="100" alt="habilidades" alt="Bullet point 1" /> <p class="h6">{{experiencia.puesto}}<small class="text-muted">. {{experiencia.periodo}}</small></p> <p class="font-italic">{{experiencia.descripcion}}</p> </li> -->
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="experiencia" style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <div class="row featurette">
+        <div class="col-md-12">
+          <h2 class="featurette-heading fw-normal lh-1">
+            Mis experiencias profesionales<span class="text-muted"></span>
+          </h2>
+          <ul>
+            <div id="text-experiencia">
+              <!-- <div *ngIf="isLogged"></div> -->
+
+              <li *ngFor="let experiencia of miPorfolio.experienciasLaborales">
+                <img
+                  [src]="miPorfolio.images.bancorLogo"
+                  class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                  width="200"
+                  height="100"
+                  alt="habilidades"
+                  alt="Bullet point 1"
+                />
+                <p class="h6">
+                  {{ experiencia.puesto
+                  }}<small class="text-muted"
+                    >. {{ experiencia.periodo }}</small
+                  >
+                </p>
+                <p class="font-italic">{{ experiencia.descripcion }}</p>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="educacion" style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <div class="row featurette">
+        <div class="col-md-12">
+          <!-- botones -->
+
+          <h2 class="featurette-heading fw-normal lh-1">
+            Estudios<span class="text-muted"></span>
+          </h2>
+
+          <ul>
+            <div id="text-educacion">
+              <li *ngFor="let educacion of miPorfolio.educacion">
+                <p class="h6">
+                  {{ educacion.estudio
+                  }}<small class="text-muted"> {{ educacion.periodo }}</small>
+                </p>
+                <small>
+                  <p><strong>Título: </strong>{{ educacion.titulo }}</p></small
+                >
+                <p class="font-italic">{{ educacion.centroEducativo }}</p>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <!-- <hr class="featurette-divider"> -->
+      <div class="row featurette">
+        <div id="habilidadesDigitales" class="col-md-7">
+          <h2 class="featurette-heading fw-normal lh-1">
+            Habilidades<span class="text-muted"></span>
+          </h2>
+          <p class="lead">
+            Mis principales habilidades digitales incluyen el manejo de:
+          </p>
+
+          <ul>
+            <div id="text-habilidadesDigitales">
+              <li *ngFor="let habilidad of miPorfolio.tecnologiasQueDomino">
+                <p class="h6">{{ habilidad }}</p>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img
+            [src]="miPorfolio.images.skills"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            width="500"
+            height="500"
+            alt="habilidades"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="proyectos" style="margin: 2%" class="card mat-card">
+  <div class="card-titles">
+    <div class="container marketing">
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading fw-normal lh-1">
+            Mis proyectos <span class="text-muted"></span>
+          </h2>
+          <p class="lead">
+            Aquí podrás ver algunos de los proyectos en los que he trabajado:
+          </p>
+
+          <ul>
+            <div>
+              <li *ngFor="let proyecto of miPorfolio.proyectos">
+                <p>
+                  {{ proyecto.descripcion }}:
+                  <a [href]="proyecto.proyectoEnlace" target="_blank"
+                    >Click aquí</a
+                  >
+                </p>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <img
+            [src]="miPorfolio.images.paginaDeEnghiv"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            width="500"
+            height="500"
+            alt="habilidades"
+          />
+        </div>
+      </div>
+
+      <!-- <hr class="featurette-divider"> -->
+    </div>
+  </div>
+</div>
+
+<footer class="container marketing">
+  <p>
+    &copy;Portafolio de {{ miPorfolio.name }} &middot; Contactame al:
+    {{ miPorfolio.numeroDeTelefono }} &middot;
+    <a href="#">Volver al principio</a>
+  </p>
+</footer>

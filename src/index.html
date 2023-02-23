@@ -1,76 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>PortafolioIG</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <title>PortafolioIG</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4JsnCVq/G.png">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <app-root></app-root>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/4JsnCVq/G.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <app-root></app-root>
 
+    <script>
+      // FUNCIONES PARA EDITAR SECCIONES
+      function eliminateSeccion(seccion) {
+        document.getElementById(seccion).style.display = "none";
+      }
 
-  <script>
+      function showTextarea(editArea, checkBotton) {
+        document.getElementById(editArea).style.display = "block";
+        document.getElementById(checkBotton).style.display = "block";
+        console.log(editArea);
 
-// FUNCIONES PARA EDITAR SECCIONES
-function eliminateSeccion(seccion) {
-  document.getElementById(seccion).style.display = "none";
-}
+        document
+          .getElementById(editArea)
+          .scrollIntoView({ behavior: "smooth" });
+      }
 
+      function changeParagraph(valor, text) {
+        document.getElementById(text).innerText = valor;
+      }
 
-function showTextarea(editArea, checkBotton, file) {
-  document.getElementById(editArea).style.display = "block";
-  document.getElementById(checkBotton).style.display = "block";
-  document.getElementById(file).style.display = "block";
+      function hideTextarea(editArea, checkBotton, file) {
+        document.getElementById(editArea).style.display = "none";
+        document.getElementById(checkBotton).style.display = "none";
+        document.getElementById(file).style.display = "none";
+      }
 
-}
+      function showFile(input, text) {
+        let file = input.files[0];
 
-function changeParagraph(valor, text) {
-  document.getElementById(text).innerText = valor;
-}
+        let reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function () {
+          document.getElementById(text).innerText = reader.result;
+        };
+      }
+      //controls if the enter key was pressed
+      // <!-- /.col-lg-4 -->
+      // let input = document.getElementById("edit-acercade");
+      // input.addEventListener('input', (e) => {
+      //   if (e.key == "Enter") {
+      //     changeParagraph2();
+      //   }
+      // });
 
-
-function hideTextarea(editArea, checkBotton, file) {
-  document.getElementById(editArea).style.display = "none";
-  document.getElementById(checkBotton).style.display = "none";
-  document.getElementById(file).style.display = "none";
-  location.reload();
-}
-
-function showFile(input, text) {
-  let file = input.files[0];
-
-  let reader = new FileReader();
-  reader.readAsText(file);
-  reader.onload = function() {
-    document.getElementById(text).innerText = reader.result;
-  };
-}
-//controls if the enter key was pressed
-// <!-- /.col-lg-4 -->
-// let input = document.getElementById("edit-acercade");
-// input.addEventListener('input', (e) => {
-//   if (e.key == "Enter") {
-//     changeParagraph2();
-//   }
-// });
-
-// function showInput() {
-//   document.getElementById("edit-acercade").style.display = "block";
-// }
-
-
+      // function showInput() {
+      //   document.getElementById("edit-acercade").style.display = "block";
+      // }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/46ae9dbbbd.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/46ae9dbbbd.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-
-
-</body>
+  </body>
 </html>

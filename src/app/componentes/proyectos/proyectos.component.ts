@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { Proyectos } from 'src/app/model/proyectos';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
-import { Habilidades } from 'src/app/model/habilidades';
-import { HabilidadesService } from 'src/app/servicios/habilidades.service';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Router } from '@angular/router';
 
@@ -16,23 +14,29 @@ import { Router } from '@angular/router';
 export class ProyectosComponent implements OnInit {
 
   proy: Proyectos[] = [];
-  habil: Habilidades[] = [];
-  yolo: any[]= [
-  {
-    "nombreE": "oyout"
-  }
-  ];
-  miPorfolio:any;
+
+  // inicio 20230210
+  proye: Proyectos = null;
+  proyec: Proyectos = new Proyectos("--", "--");
+  // FIN 20230210
+
   nombreE: string = '';
   descripcionE: string = '';
 
-  constructor(private datosPorfolio:PorfolioService,private sHabilidades: HabilidadesService,private sProyectos: ProyectosService, private tokenService: TokenService, private router: Router) { }
+  // inicio 20230210
+  nombreEM: string = '';
+  descripcionEM: string = '';
+  // FIN 20230210
+
+
+  miPorfolio:any;
+  constructor(private datosPorfolio:PorfolioService,private sProyectos: ProyectosService, private tokenService: TokenService, private router: Router) { }
   isLogged = false;
 
   ngOnInit(): void {
 
     this.cargarProyectos()
-    this.cargarHabilidades()
+
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -54,12 +58,51 @@ export class ProyectosComponent implements OnInit {
       data => {
         alert("Proyecto añadido. Los cambios se veran reflejados al recargar la página.");
         this.router.navigate(['']);
+
+        // INICIO 20230210
+        this.nombreE = "";
+        this.descripcionE = "";
+        this.cargarProyectos();
+        // FIN 20230210
       }, err => {
         alert("Falló");
         this.router.navigate(['']);
       }
     )
   }
+
+  // INICIO 20230210
+  openUpdateForm(form: string, id?: number): void {
+    this.sProyectos.detail(id).subscribe(
+      data =>{
+        this.proye = data;
+        this.nombreEM = data.nombreE;
+        this.descripcionEM = data.descripcionE;
+        document.getElementById(form).scrollIntoView({behavior: 'smooth'});
+      }, err =>{
+        alert("Error al modificar");
+        this.router.navigate(['']);
+      }
+    )
+  }
+
+  onUpdate(id?: number): void{
+   this.proyec = new Proyectos(this.nombreEM, this.descripcionEM);
+   this.sProyectos.update(id, this.proyec ).subscribe(
+    data => {
+      alert(`Proyecto actualizado. Dar click en "Aceptar" para que se reflejen los cambios`);
+      this.router.navigate(['']);
+      this.cargarProyectos();
+
+    }, err => {
+      alert(`Error al modificar la educacion`);
+      this.router.navigate(['']);
+    }
+
+  )
+
+  }
+  // FIN 20230210
 
   cargarProyectos(): void {
     this.sProyectos.lista().subscribe(data => { this.proy = data; })
@@ -77,33 +120,6 @@ export class ProyectosComponent implements OnInit {
     }
   }
 
-  onCreateH(): void {
-    const habil = new Habilidades(this.nombreE);
-    this.sHabilidades.save(habil).subscribe(
-      data => {
-        alert("Habilidad añadida. Los cambios se veran reflejados al recargar la página.");
-        this.router.navigate(['']);
-      }, err => {
-        alert("Falló");
-        this.router.navigate(['']);
-      }
-    )
-  }
 
-  cargarHabilidades(): void {
-    this.sHabilidades.lista().subscribe(data => { this.habil = data; })
-  }
-
-  deleteH(id?: number){
-    if(id != undefined){
-      this.sHabilidades.delete(id).subscribe(
-        data => {
-          this.cargarHabilidades();
-        }, err => {
-          alert("No se pudo borrar la habilidad");
-        }
-      )
-    }
-  }
 
 }
