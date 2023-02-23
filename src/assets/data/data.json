@@ -89,6 +89,10 @@
 
     "proyectos": [
         {
+            "descripcion": "Colección de mini-proyectos",
+            "proyectoEnlace": "https://ij-guerrero.github.io/ejerciciosJavascript/"
+        },
+        {
             "descripcion": "La página web de una empresa ficticia que tuve que desarrollar para un proyecto de la escuela",
             "proyectoEnlace": "https://ij-guerrero.github.io/ENGHiV/"
         },
